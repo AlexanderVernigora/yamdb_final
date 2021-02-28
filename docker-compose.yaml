@@ -7,12 +7,10 @@ services:
     restart: always
     volumes:
       - static_data:/code/static
-    ports:
-      - "8000:8000"
-    networks:
-      - my_net
     env_file:
       - ./.env
+    depends_on:
+      - db
 
   db:
     image: postgres:13.2-alpine
@@ -20,31 +18,22 @@ services:
     restart: always
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    ports:
-      - "5432:5432"
-    networks:
-      - my_net
     env_file:
       - ./.env
 
   nginx:
-    # image: nginx:1.19.7-alpine
     build: nginx/
     container_name: nginx
     restart: always
     volumes:
       - static_data:/code/static
     ports:
-      - "80:8000"
-    networks:
-      - my_net
+      - "80:80"
     env_file:
       - ./.env
+    depends_on:
+      - web
 
 volumes:
   postgres_data:
   static_data:
-
-networks:
-  my_net:
-    driver: bridge
