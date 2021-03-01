@@ -47,4 +47,4 @@ bash# docker-compose exec web python manage.py loaddata fixtures.json
 Например: http://127.0.0.1:8000/redoc/
 
 # Статус тестов
-![workflow](https://github.com/AlexanderVernigora/yamdb_final/workflows/workflow/badge.svg)
+![tests](https://github.com/AlexanderVernigora/yamdb_final/workflows/tests/badge.svg)
