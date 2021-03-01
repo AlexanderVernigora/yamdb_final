@@ -63,8 +63,8 @@ class APIAuthConfirm(viewsets.ModelViewSet):
             email = str(serializer.validated_data['email'])
             user = CustomUser.objects.filter(email=email).first()
             if user is not None:
-                confirm_code = 
-                    str(serializer.validated_data['confirmation_code'])
+                confirm_code = str(
+                    serializer.validated_data['confirmation_code'])
                 if confirm_code == str(user.confirmation_code):
                     refresh = RefreshToken.for_user(user)
                     JWT = {
@@ -72,8 +72,10 @@ class APIAuthConfirm(viewsets.ModelViewSet):
                         'access': str(refresh.access_token)
                     }
                     return Response(JWT, status=status.HTTP_200_OK)
-        return Response('Authorization error. Check email or token.',
-            status=status.HTTP_200_OK)
+        return Response(
+            'Authorization error. Check email or token.',
+            status=status.HTTP_200_OK
+        )
 
 
 class APIUserProfileViewSet(viewsets.ModelViewSet):
