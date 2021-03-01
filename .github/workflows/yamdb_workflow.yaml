@@ -54,7 +54,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          fingerprint: ${{ secrets.FINGERPRINT }}
+          #fingerprint: ${{ secrets.FINGERPRINT }}
           key: ${{ secrets.SSH_KEY }}
           script: |
             sudo docker pull alexandervernigora/web:latest
