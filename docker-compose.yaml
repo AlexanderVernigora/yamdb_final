@@ -12,7 +12,7 @@ services:
   
   web:
     # build: .
-    image: alexandervernigora/web:v1
+    image: alexandervernigora/web:latest
     container_name: web
     command: gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
     restart: always
