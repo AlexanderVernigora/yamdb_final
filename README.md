@@ -1,5 +1,8 @@
 # Спецификация API сервиса YamDB
 
+#### Статус тестов
+![yamdb_workflow](https://github.com/AlexanderVernigora/yamdb_final/workflows/yamdb_workflow/badge.svg)
+
 ## Текущая версия
 
 Текущая версия спецификации YamDB_API - 1.0
@@ -45,6 +48,3 @@ bash# docker-compose exec web python manage.py loaddata fixtures.json
 В проект интегрирована система документирования API Redoc. Она доступна по адресу http://ваш_сервер/redoc/.
 
 Например: http://127.0.0.1:8000/redoc/
-
-# Статус тестов
-![yamdb_workflow](https://github.com/AlexanderVernigora/yamdb_final/workflows/yamdb_workflow/badge.svg)
