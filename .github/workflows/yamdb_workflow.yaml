@@ -60,7 +60,6 @@ jobs:
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker run --rm -d -p 8000:8000 alexandervernigora/web:latest
 
-
   send_message:
     name: Report to Telegram
     runs-on: ubuntu-latest
