@@ -2,7 +2,6 @@ name: yamdb_workflow
 
 on: [push]
 
-
 jobs:
   tests:
     name: CONFIGURING and testing application
@@ -43,8 +42,6 @@ jobs:
           push: true
           tags: alexandervernigora/web:latest
 
-
-  
   deploy:
     name: DEPLOY
     runs-on: ubuntu-latest
