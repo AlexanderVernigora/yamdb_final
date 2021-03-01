@@ -56,7 +56,7 @@ jobs:
           script: |
             sudo docker pull alexandervernigora/web:latest
             id=$(sudo docker create alexandervernigora/web:latest)
-            sudo docker cp $id:code/docker-compose.yaml code/docker-compose.yaml
+            sudo docker cp $id:bug/code/docker-compose.yaml code/docker-compose.yaml
             #sudo mkdir nginx $id:code/nginx/Dokerfile nginx/Dokerfile
             #sudo mkdir nginx $id:code/nginx/default.conf nginx/default.conf
             sudo docker rm -v $id
