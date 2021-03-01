@@ -43,6 +43,7 @@ jobs:
           push: true
           tags: alexandervernigora/web:latest
 
+
   deploy:
     name: DEPLOY
     runs-on: ubuntu-latest
