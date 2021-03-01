@@ -55,11 +55,9 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            ls
-
-          #  sudo docker pull alexandervernigora/web:latest
-          #  sudo docker stop $(sudo docker ps -a -q)
-          #  sudo docker run --rm -d -p 8000:8000 alexandervernigora/web:latest
+            sudo docker pull alexandervernigora/web:latest
+            sudo docker stop $(sudo docker ps -a -q)
+            sudo docker run --rm -d -p 8000:8000 alexandervernigora/web:latest
 
   send_message:
     name: REPORT TO Telegram
