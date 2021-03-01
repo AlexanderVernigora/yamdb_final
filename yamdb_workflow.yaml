@@ -4,6 +4,7 @@ on: [push]
 
 jobs:
   tests:
+    name: CONFIGURING and testing application
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -22,7 +23,7 @@ jobs:
         run: pytest
 
   build_and_push_to_docker_hub:
-    name: Push Docker image to Docker Hub
+    name: PUSH Docker image to DockerHub
     runs-on: ubuntu-latest
     needs: tests
     steps:
@@ -41,28 +42,30 @@ jobs:
           push: true
           tags: alexandervernigora/web:latest
 
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   needs: build_and_push_to_docker_hub
-  #   steps:
-  #     - name: executing remote ssh commands to deploy
-  #       uses: appleboy/ssh-action@master
-  #       with:
-  #         host: ${{ secrets.HOST }}
-  #         username: ${{ secrets.USER }}
-  #         key: ${{ secrets.SSH_KEY }}
-  #         script: |
-  #           sudo docker pull cementhools/yamdb_final:latest
-  #           sudo docker stop $(sudo docker ps -a -q)
-  #           sudo docker run --rm -d -p 8000:8000 cementhools/yamdb_final:latest
+  deploy:
+    name: DEPLOY
+    runs-on: ubuntu-latest
+    needs: build_and_push_to_docker_hub
+    steps:
+      - name: executing remote ssh commands to deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            sudo docker pull alexandervernigora/web:latest
+            sudo docker stop $(sudo docker ps -a -q)
+            sudo docker run --rm -d -p 8000:8000 alexandervernigora/web:latest
 
-  # send_message:
-  #   runs-on: ubuntu-latest
-  #   needs: deploy
-  #   steps:
-  #     - name: send message
-  #       uses: appleboy/telegram-action@master
-  #       with:
-  #         to: ${{ secrets.TELEGRAM_TO }}
-  #         token: ${{ secrets.TELEGRAM_TOKEN }}
-  #         message: ${{ github.workflow }} успешно выполнен!!
+  send_message:
+    name: REPORT TO Telegram
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: send message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: ${{ github.workflow }} успешно выполнен.
