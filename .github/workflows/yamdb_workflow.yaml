@@ -42,7 +42,6 @@ jobs:
           push: true
           tags: alexandervernigora/web:latest
 
-
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
@@ -54,7 +53,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          #fingerprint: ${{ secrets.FINGERPRINT }}
+          fingerprint: ${{ secrets.FINGERPRINT }}
           key: ${{ secrets.SSH_KEY }}
           script: |
             sudo docker pull alexandervernigora/web:latest
