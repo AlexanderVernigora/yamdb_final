@@ -55,12 +55,12 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             sudo docker pull alexandervernigora/web:latest
-            id=$(sudo docker create alexandervernigora/web:latest)
-            sudo docker cp $id:bug/code/docker-compose.yaml code/docker-compose.yaml
+            id=$(docker create alexandervernigora/web:latest)
+            sudo docker cp $id:/code/docker-compose.yaml code/docker-compose.yaml
             #sudo mkdir nginx $id:code/nginx/Dokerfile nginx/Dokerfile
             #sudo mkdir nginx $id:code/nginx/default.conf nginx/default.conf
             sudo docker rm -v $id
-            sudo docker kill -s $(sudo docker ps -q)
+            sudo docker kill -s KILL $(docker ps -q)
             sudo docker rm $(sudo docker ps -a -q)
             sudo docker-compose up -d --force-recreate
 
