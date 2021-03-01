@@ -3,6 +3,7 @@
 #### Статус тестов
 ![yamdb_workflow](https://github.com/AlexanderVernigora/yamdb_final/workflows/yamdb_workflow/badge.svg)
 
+
 ## Текущая версия
 
 Текущая версия спецификации YamDB_API - 1.0
