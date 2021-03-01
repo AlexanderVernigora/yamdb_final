@@ -1,17 +1,6 @@
 version: "3.8"
 
 services:
-  web:
-    build: .
-    container_name: web
-    restart: always
-    volumes:
-      - static_data:/code/static
-    env_file:
-      - ./.env
-    depends_on:
-      - db
-
   db:
     image: postgres:13.2-alpine
     container_name: db
@@ -20,6 +9,18 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env
+  
+  web:
+    build: .
+    container_name: web
+    command: gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
+    restart: always
+    volumes:
+      - static_data:/code/static
+    env_file:
+      - ./.env
+    depends_on:
+      - db
 
   nginx:
     build: nginx/

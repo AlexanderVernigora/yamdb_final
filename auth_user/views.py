@@ -60,18 +60,18 @@ class APIAuthConfirm(viewsets.ModelViewSet):
     def create(self, request):
         serializer = ConfirmationSerializer(data=request.data, partial=True)
         if serializer.is_valid(raise_exception=True):
-            email = serializer.validated_data['email']
-            user = CustomUser.objects.filter(email=email).first()
+            email = str(serializer.validated_data['email'])
+            user = strCustomUser.objects.filter(email=email).first()
             if user is not None:
-                confirm_code = serializer.validated_data['confirmation_code']
-                if confirm_code == user.confirmation_code:
+                confirm_code = str(serializer.validated_data['confirmation_code'])
+                if confirm_code == str(user.confirmation_code):
                     refresh = RefreshToken.for_user(user)
                     JWT = {
                         'refresh': str(refresh),
                         'access': str(refresh.access_token)
                     }
                     return Response(JWT, status=status.HTTP_200_OK)
-
+        return Response('Authorization error. Check email or token.', status=status.HTTP_200_OK)
 
 class APIUserProfileViewSet(viewsets.ModelViewSet):
     """Управление пользователями."""
