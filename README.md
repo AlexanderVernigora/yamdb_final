@@ -45,3 +45,6 @@ bash# docker-compose exec web python manage.py loaddata fixtures.json
 В проект интегрирована система документирования API Redoc. Она доступна по адресу http://ваш_сервер/redoc/.
 
 Например: http://127.0.0.1:8000/redoc/
+
+# Статус тестов
+![workflow](https://github.com/AlexanderVernigora/yamdb_final/workflows/workflow/badge.svg)
