@@ -53,6 +53,8 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
           script: |
             sudo docker pull alexandervernigora/web:latest
             id=$(sudo docker create alexandervernigora/web:latest)
