@@ -71,7 +71,7 @@ jobs:
             pwd
             ls -la
             #sudo docker pull alexandervernigora/web:latest
-            sudo docker-compose up -d --force-recreate /home/code/docker-compose.yaml
+            sudo docker-compose up -d --force-recreate -f code/docker-compose.yaml
 
   send_message:
     name: REPORT TO Telegram
