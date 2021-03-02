@@ -68,8 +68,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cat ./code/docker-compose.yaml
+            pwd
+            ls - la
             #sudo docker pull alexandervernigora/web:latest
-            sudo docker-compose up -d --force-recreate
+            sudo docker-compose up -d --force-recreate ./code/docker-compose.yaml
 
   send_message:
     name: REPORT TO Telegram
