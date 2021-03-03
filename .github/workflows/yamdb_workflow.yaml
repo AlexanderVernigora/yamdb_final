@@ -46,6 +46,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: "./docker-compose.yaml"
           target: "./code/"
+          source: "./.env"
+          target: "./code/"          
 
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
