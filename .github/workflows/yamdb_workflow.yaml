@@ -47,7 +47,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          source: "./docker-compose.yaml,./.env,./nginx/Dockerfile,./nginx/default.conf"
+          source: "./docker-compose.yaml,./.env,./nginx/default.conf"
           target: "./code/"          
 
       - name: Push to Docker Hub
