@@ -67,14 +67,12 @@ class APIAuthConfirm(viewsets.ModelViewSet):
                     serializer.validated_data['confirmation_code'])
                 if confirm_code == str(user.confirmation_code):
                     refresh = RefreshToken.for_user(user)
-                    JWT = {
-                        'refresh': str(refresh),
-                        'access': str(refresh.access_token)
-                    }
-                    return Response(str(JWT), status=status.HTTP_200_OK)
+                    return Response({"token": str(refresh.access_token)},
+                        status=status.HTTP_200_OK
+                    )
         return Response(
             'Authorization error. Check email or token.',
-            status=status.HTTP_200_OK
+            status=status.HTTP_400_BAD_REQUEST
         )
 
 
