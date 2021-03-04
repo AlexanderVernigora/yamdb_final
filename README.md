@@ -46,6 +46,4 @@ bash# docker-compose exec web python manage.py loaddata fixtures.json
 
 ## Примеры использования
 
-В проект интегрирована система документирования API Redoc. Она доступна по адресу http://ваш_сервер/redoc/.
-
-Например: http://127.0.0.1:8000/redoc/
+В проект интегрирована система документирования API Redoc. Она доступна по адресу http://130.193.40.181/redoc/.
