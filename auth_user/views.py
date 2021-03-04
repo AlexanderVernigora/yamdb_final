@@ -67,7 +67,8 @@ class APIAuthConfirm(viewsets.ModelViewSet):
                     serializer.validated_data['confirmation_code'])
                 if confirm_code == str(user.confirmation_code):
                     refresh = RefreshToken.for_user(user)
-                    return Response({"token": str(refresh.access_token)},
+                    return Response(
+                        {"token": str(refresh.access_token)},
                         status=status.HTTP_200_OK
                     )
         return Response(
