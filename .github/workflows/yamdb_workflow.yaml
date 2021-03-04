@@ -14,6 +14,8 @@ jobs:
           python-version: 3.8
       - name: Install dependencies
         run: |
+          sudo touch .env
+          export SECRET_KEY=${{ secrets.SECRET_KEY }}
           python -m pip install --upgrade pip
           pip install flake8 pytest
           pip install -r requirements.txt
