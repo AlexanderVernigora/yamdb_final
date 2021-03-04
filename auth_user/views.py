@@ -71,7 +71,7 @@ class APIAuthConfirm(viewsets.ModelViewSet):
                         'refresh': str(refresh),
                         'access': str(refresh.access_token)
                     }
-                    return Response(JWT, status=status.HTTP_200_OK)
+                    return Response(str(JWT), status=status.HTTP_200_OK)
         return Response(
             'Authorization error. Check email or token.',
             status=status.HTTP_200_OK
