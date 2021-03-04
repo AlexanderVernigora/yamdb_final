@@ -23,7 +23,7 @@ services:
       - db
 
   nginx:
-    build: nginx:1.19.7
+    image: nginx:1.19.7
     container_name: nginx
     restart: always
     volumes:
