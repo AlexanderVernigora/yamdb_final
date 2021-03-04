@@ -16,7 +16,7 @@ jobs:
         run: |
           sudo touch .env
           export SECRET_KEY=${{ secrets.SECRET_KEY }}
-          export DATABASE_URL=${{ secrets.DATABASE_URL }          
+          export DATABASE_URL=${{ secrets.DATABASE_URL }}
           python -m pip install --upgrade pip
           pip install flake8 pytest
           pip install -r requirements.txt
