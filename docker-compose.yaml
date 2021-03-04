@@ -28,7 +28,7 @@ services:
     restart: always
     volumes:
       - static_data:/code/static
-      - ./code/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/:/etc/nginx/conf.d/
     ports:
       - "80:80"
     env_file:
